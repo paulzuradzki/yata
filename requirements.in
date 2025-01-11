@@ -1,0 +1,6 @@
+Django==5.1.1
+playwright==1.47.0
+pytest==8.3.3
+pytest-django==4.9.0
+pytest-env==1.1.4
+pytest-playwright==0.5.2

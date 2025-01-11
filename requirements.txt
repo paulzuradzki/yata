@@ -1,1 +1,5 @@
 Django
+pytest
+pytest_django
+pytest-env
+pytest-playwright

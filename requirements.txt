@@ -12,12 +12,18 @@ certifi==2024.12.14
     # via requests
 charset-normalizer==3.4.1
     # via requests
+crispy-tailwind==1.0.3
+    # via -r requirements.in
 django==5.1.1
     # via
     #   -r requirements.in
+    #   crispy-tailwind
     #   django-browser-reload
+    #   django-crispy-forms
 django-browser-reload==1.17.0
     # via -r requirements.in
+django-crispy-forms==2.3
+    # via crispy-tailwind
 greenlet==3.0.3
     # via playwright
 idna==3.10

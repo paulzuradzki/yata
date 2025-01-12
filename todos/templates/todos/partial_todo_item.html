@@ -1,5 +1,8 @@
-<div class="todo_item">
-<input type="checkbox"/>
+<div class="todo_item px-2">
+<input type="checkbox"
+class="h-6 w-6 rounded border-green-300 text-green-600 accent-green-400 cursor-pointer inline-block align-middle"
+data-testid="toggle_item_{{ item.id}}"
+/>
 {{ item.title }}
 <button>
     Delete

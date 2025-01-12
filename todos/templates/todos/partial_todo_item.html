@@ -1,7 +1,10 @@
 <div class="todo_item px-2">
 <input type="checkbox"
+hx-put="{% url 'action_toggle_todo' item.id %}"
 class="h-6 w-6 rounded border-green-300 text-green-600 accent-green-400 cursor-pointer inline-block align-middle"
 data-testid="toggle_item_{{ item.id}}"
+{% if item.completed %} checked {% endif %}
+hx-put="{% url 'action_toggle_todo' item.id %}"
 />
 {{ item.title }}
 <button>

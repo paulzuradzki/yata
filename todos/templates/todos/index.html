@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
     <script src="{% static 'todos/utils.js' %}"></script>
   </head>
-  <body>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-6 space-y-4 pt-4">
       <h1 class="px-2 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-light">Things to do</h1>
       <div id="todo_items" class="space-y-2">

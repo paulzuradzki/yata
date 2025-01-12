@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from . import forms
 from .models import TodoItem
+from django.http import HttpResponse
 
 
 @require_http_methods(["GET"])
@@ -17,3 +18,11 @@ def action_add_new_todo(request):
     form = forms.CreateTodoForm(request.POST)
     instance = form.save()
     return render(request, "todos/partial_todo_item.html", {"item": instance})
+
+
+@require_http_methods(["PUT"])
+def action_toggle_todo(request, item_id):
+    item = TodoItem.objects.get(id=item_id)
+    item.completed = not item.completed
+    item.save()
+    return HttpResponse("")

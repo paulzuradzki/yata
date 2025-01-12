@@ -2,45 +2,33 @@ from django.urls import reverse
 from playwright.sync_api import Page, expect
 from todos.models import TodoItem
 
+
+def test_checkbox_loads_correctly(live_server, page: Page):
+    item = TodoItem.objects.create(title="Test item", completed=True)
+    page.goto(reverse_url(live_server, "index"))
+    checkbox_id = f"toggle_item_{item.id}"
+    expect(page.get_by_test_id(checkbox_id)).to_be_checked()
+
+
 def test_update_checkbox(live_server, page: Page):
-    
+
     items = [TodoItem.objects.create(title=f"item{i}") for i in range(3)]
-    page.goto(reverse(live_server, "index"))
-    
+    page.goto(reverse_url(live_server, "index"))
+
     middle_item = items[1]
     middle_id = f"toggle_item_{middle_item.id}"
-    page.get_by_test_id(middle_id).to_be_checked()
+    page.get_by_test_id(middle_id).check()
     expect(page.get_by_test_id(middle_id)).to_be_checked()
-    
+
     middle_item.refresh_from_db()
     assert middle_item.completed is True
-    
+
     items[0].refresh_from_db()
     assert items[0].completed is False
-    
+
     items[2].refresh_from_db()
     assert items[2].completed is False
 
-    # page.get_by_label("Title*").fill("item1")
-    # page.get_by_label("Description*").fill("item1 description")
-    # page.get_by_role("button", name="Add").click()
-
-    # page.get_by_label("Title*").fill("item2")
-    # page.get_by_label("Description*").fill("item2 description")
-    # page.get_by_role("button", name="Add").click()
-
-    # page.get_by_label("Title*").fill("item3")
-    # page.get_by_label("Description*").fill("item3 description")
-    # page.get_by_role("button", name="Add").click()
-
-    # page.get_by_label("Title*").fill("item4")
-    # page.get_by_label("Description*").fill("item4 description")
-    # page.get_by_role("button", name="Add").click()
-
-    # page.get_by_test_id("toggle_item_1").check()
-    # page.get_by_test_id("toggle_item_2").check()
-    # page.get_by_test_id("toggle_item_3").check()
-    # page.get_by_test_id("toggle_item_4").check()
 
 def test_display_one_item_on_first_load(live_server, page: Page):
     TodoItem.objects.create(title="Test item")

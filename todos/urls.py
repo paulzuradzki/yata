@@ -11,4 +11,9 @@ urlpatterns = [
         views.action_toggle_todo,
         name="action_toggle_todo",
     ),
+    path(
+        "action_delete_todo/<int:item_id>",
+        views.action_delete_todo,
+        name="action_delete_todo",
+    ),
 ]

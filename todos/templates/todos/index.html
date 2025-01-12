@@ -12,7 +12,7 @@
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-6 space-y-4 pt-4">
       <h1 class="px-2 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-light">Things to do</h1>
-      <div id="todo_items" class="space-y-2">
+      <div id="todo_items" class="space-y-2" data-testid="todo_items">
         {% for item in todo_items %}
           {% include 'todos/partial_todo_item.html' %}
         {% endfor %}

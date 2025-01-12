@@ -1,6 +1,20 @@
 from django.urls import reverse
 from playwright.sync_api import Page, expect
 from todos.models import TodoItem
+import pytest
+
+
+def test_delete_item(live_server, page: Page):
+    item = TodoItem.objects.create(title="Test item", completed=True)
+    page.goto(reverse_url(live_server, "index"))
+
+    delete_id = f"delete_item_{item.id}"
+    page.get_by_test_id(delete_id).click()
+
+    expect(page.get_by_test_id("todo_items")).not_to_contain_text("Test item")
+
+    with pytest.raises(TodoItem.DoesNotExist):
+        TodoItem.objects.get(id=item.id)
 
 
 def test_checkbox_loads_correctly(live_server, page: Page):
@@ -10,7 +24,7 @@ def test_checkbox_loads_correctly(live_server, page: Page):
     expect(page.get_by_test_id(checkbox_id)).to_be_checked()
 
 
-def test_update_checkbox(live_server, page: Page):
+def test_checkbox(live_server, page: Page):
 
     items = [TodoItem.objects.create(title=f"item{i}") for i in range(3)]
     page.goto(reverse_url(live_server, "index"))
@@ -43,7 +57,6 @@ def test_create_todo_item_gets_rid_of_nothing_to_see(live_server, page: Page):
     page.get_by_label("Title*").fill("Test title")
     page.get_by_label("Description*").fill("Test description")
     page.get_by_role("button", name="Add").click()
-
     expect(page.get_by_text("Nothing to see here...")).to_be_hidden()
 
 

@@ -26,3 +26,10 @@ def action_toggle_todo(request, item_id):
     item.completed = not item.completed
     item.save()
     return HttpResponse("")
+
+
+@require_http_methods(["DELETE"])
+def action_delete_todo(request, item_id):
+    item = TodoItem.objects.get(id=item_id)
+    item.delete()
+    return HttpResponse("")

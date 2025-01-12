@@ -11,9 +11,9 @@
       <div class="text-center text-2xl font-bold text-transparent/30 pt-6">Nothing to see here...</div>
     </div>
 
-    <div>
+    <div class="absolute inset-x-0 bottom-2 flex justify-center">
       <div>
-        <h2>Add Item</h2>
+        <h2 class="text-xl font-bold leading-7 text-gray-800 sm:truncate sm:text-2xl sm:tracking-tight text-center">Add Item</h2>
         <form>
           {% csrf_token %}
           {{ form }}

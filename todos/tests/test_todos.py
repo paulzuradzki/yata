@@ -18,7 +18,7 @@ def test_create_todo_item_shows_new_item(live_server, page: Page):
     page.get_by_label("Title*").fill("Test title")
     page.get_by_label("Description*").fill("Test description")
     page.get_by_role("button", name="Add").click()
-    page.wait_for_selector("text=foo")
+    page.wait_for_selector("text=Test title")
 
 
 def test_display_empty_list_on_first_load(live_server, page: Page):

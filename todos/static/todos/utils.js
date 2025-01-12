@@ -22,4 +22,9 @@ window.onload = function() {
     const observer = new MutationObserver(showOrHideEmptyMessage);
     // watch mutations so the same code will work whether we add or delete items
     observer.observe(targetNode, config);
+
+    // ensure that the correct message is displayed as soon as the page loads
+    // else we only call when element is mutated and 
+    // show "Nothing to see here..." even with items in DB
+    showOrHideEmptyMessage();
 };

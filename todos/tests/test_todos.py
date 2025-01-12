@@ -1,5 +1,13 @@
 from django.urls import reverse
 from playwright.sync_api import Page, expect
+from todos.models import TodoItem
+
+
+def test_display_one_item_on_first_load(live_server, page: Page):
+    TodoItem.objects.create(title="Test item")
+    page.goto(reverse_url(live_server, "index"))
+    page.wait_for_selector("text=Test item")  # select DOM elements
+    expect(page.get_by_text("Nothing to see here..")).to_be_hidden()
 
 
 def test_create_todo_item_gets_rid_of_nothing_to_see(live_server, page: Page):

@@ -10,5 +10,16 @@
       <h1>Things to do</h1>
       <div class="text-center text-2xl font-bold text-transparent/30 pt-6">Nothing to see here...</div>
     </div>
+
+    <div>
+      <div>
+        <h2>Add Item</h2>
+        <form>
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+    </div>
   </body>
 </html>

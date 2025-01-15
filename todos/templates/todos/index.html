@@ -12,16 +12,16 @@
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div class="flex items-center justify-between p-6 border-b mb-5">
-      <a href="/" class="text-purple-500 font-bold text-3xl">YATA!</a>
+      <a href="/" class="text-primary-500 font-bold text-3xl">YATA!</a>
       <div class="hidden lg:block">
         <nav class="gap-x-4 flex">
-          <a href="#" class="bg-purple-600 hover:bg-purple-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">About</a>
-          <a href="#" class="bg-purple-600 hover:bg-purple-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">Contact</a>
-          <a href="#" class="bg-purple-600 hover:bg-purple-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">Other</a>
+          <a href="#" class="bg-primary-600 hover:bg-primary-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">About</a>
+          <a href="#" class="bg-primary-600 hover:bg-primary-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">Contact</a>
+          <a href="#" class="bg-primary-600 hover:bg-primary-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">Other</a>
         </nav>
       </div>
       <div class="block lg:hidden" x-data="{ open: false}" class="fixed z-10 right-5 bg-white border shadow-lg rounded-lg p-2">
-        <button @click="open = ! open" class="bg-purple-600 hover:bg-purple-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">Menu 🔽</button>
+        <button @click="open = ! open" class="bg-primary-600 hover:bg-primary-700 text-gray-100 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">Menu 🔽</button>
         <div x-show="open">
           <nav class="flex flex-col text-left gap-2">
             <a href="#" class="text-gray-700 font-bold rounded-full pt-1 pb-1 pl-3 pr-3">About</a>

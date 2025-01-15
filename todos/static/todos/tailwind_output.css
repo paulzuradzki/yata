@@ -626,6 +626,11 @@ video {
   background-color: rgb(191 224 226 / var(--tw-bg-opacity, 1));
 }
 
+p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

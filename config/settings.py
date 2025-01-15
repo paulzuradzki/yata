@@ -31,10 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # internal
     "todos",
+
+    # third-party    
     "crispy_forms",
     "crispy_tailwind",
     "django_browser_reload",
+    "template_partials",
+    
+    # django built-ins
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

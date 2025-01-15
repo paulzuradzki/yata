@@ -1,12 +1,35 @@
 {% extends "todos/_base.html" %}
 {% load static %}
 {% load tailwind_filters %}
+{% load partials %}
+
+{% partialdef todo-item %}
+<div class="todo_item border-solid border border-green-100 rounded-lg shadow-md bg-white pl-4 pr-4 pt-2 pb-2 flex justify-between "
+    id="item-{{ item.id }}">
+    <div>
+        <input type="checkbox" class="h-6 w-6 rounded border-green-300 text-green-600
+        accent-green-400 
+        cursor-pointer
+        inline-block align-middle
+        " data-testid="toggle_item_{{ item.id }}" {% if item.completed %} checked {% endif %}
+            hx-put="{% url 'action_toggle_todo' item.id %}" />
+
+        <span class="inline-block align-middle px-2 font-semibold font-normal
+        "> {{ item.title }}</span>
+    </div>
+    <button class="button-secondary" data-testid="delete_item_{{ item.id }}" hx-delete="{% url 'action_delete_todo' item.id %}"
+        hx-target="#item-{{ item.id }}" hx-swap="outerHTML">
+        Delete
+    </button>
+</div>
+{% endpartialdef todo-item %}
+
 {% block content %}
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-6 space-y-4 pt-4">
         <h1 class="px-2 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-light">Things to do</h1>
         <div id="todo_items" class="space-y-2" data-testid="todo_items">
           {% for item in todo_items %}
-            {% include 'todos/partial_todo_item.html' %}
+            {% partial todo-item %}
           {% endfor %}
         </div>
         <div class="text-center text-2xl font-bold text-transparent/30 pt-6 hidden" id="todo_items_empty">Nothing to see here...</div>

@@ -11,7 +11,7 @@
         <span class="inline-block align-middle px-2 font-semibold font-normal
         "> {{ item.title }}</span>
     </div>
-    <button class="button" data-testid="delete_item_{{ item.id }}" hx-delete="{% url 'action_delete_todo' item.id %}"
+    <button class="button-secondary" data-testid="delete_item_{{ item.id }}" hx-delete="{% url 'action_delete_todo' item.id %}"
         hx-target="#item-{{ item.id }}" hx-swap="outerHTML">
         Delete
     </button>
